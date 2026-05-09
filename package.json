@@ -1,0 +1,33 @@
+{
+  "name": "depot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "depot workspace child repository",
+  "main": "dist/src/index.js",
+  "bin": {
+    "depot": "dist/src/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli.ts",
+    "test": "vitest",
+    "lint": "eslint src tests eslint.config.mjs",
+    "lint:arch": "depcruise --config .dependency-cruiser.cjs \"src/**/*.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/node": "^24.9.1",
+    "dependency-cruiser": "^16.10.4",
+    "eslint": "^9.39.4",
+    "eslint-plugin-import": "^2.32.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.46.1",
+    "vitest": "^4.1.2"
+  }
+}
