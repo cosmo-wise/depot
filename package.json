@@ -3,18 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "depot workspace child repository",
-  "main": "dist/src/index.js",
-  "bin": {
-    "depot": "dist/src/cli.js"
-  },
+  "description": "Chariot Depot - UI asset center for the Harness generation chain",
+  "workspaces": [
+    "packages/contracts",
+    "packages/tokens",
+    "packages/web-radix",
+    "packages/universal-nativewind",
+    "packages/blocks",
+    "packages/manifests"
+  ],
   "scripts": {
-    "build": "tsc",
+    "build": "npm run build --workspaces",
+    "build:registry": "tsx scripts/buildRegistry.ts",
     "dev": "tsx src/cli.ts",
     "test": "vitest",
-    "lint": "eslint src tests eslint.config.mjs",
-    "lint:arch": "depcruise --config .dependency-cruiser.cjs \"src/**/*.ts\"",
-    "typecheck": "tsc --noEmit"
+    "test:contracts": "vitest --config packages/contracts/vitest.config.ts",
+    "test:manifests": "vitest --config packages/manifests/vitest.config.ts",
+    "lint": "eslint packages tests scripts eslint.config.mjs",
+    "lint:arch": "depcruise --config .dependency-cruiser.cjs \"packages/**/src/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "verify:profiles": "tsx scripts/verifyProfiles.ts",
+    "verify:tokens": "tsx scripts/syncTokens.ts --check",
+    "doctor": "npm run typecheck && npm run lint && npm run lint:arch && npm test -- --run"
   },
   "engines": {
     "node": ">=20.0.0"
@@ -28,6 +38,7 @@
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.46.1",
-    "vitest": "^4.1.2"
+    "vitest": "^4.1.2",
+    "zod": "^3.23.8"
   }
 }

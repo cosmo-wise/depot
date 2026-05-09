@@ -3,3 +3,6 @@ dist/
 coverage/
 output/
 .trial/
+dist-registry/
+packages/*/dist/
+*.tgz

@@ -1,0 +1,26 @@
+{
+  "name": "@chariot/depot-tokens",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Design token source of truth for Depot",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./css": "./dist/css/variables.css",
+    "./tailwind": "./dist/tailwind/preset.js",
+    "./native": "./dist/native/tokens.js"
+  },
+  "scripts": {
+    "build": "tsc && node dist/generate.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@chariot/depot-contracts": "*"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "@chariot/depot-universal-nativewind",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "description": "Universal cross-platform component implementations (Expo / NativeWind) — V2 reserved",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^18 || ^19",
+    "react-native": "*"
+  },
+  "dependencies": {
+    "@chariot/depot-contracts": "*",
+    "@chariot/depot-tokens": "*"
+  }
+}
