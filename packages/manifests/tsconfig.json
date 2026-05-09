@@ -4,6 +4,9 @@
     "outDir": "dist",
     "rootDir": "src"
   },
+  "references": [
+    { "path": "../tokens" }
+  ],
   "include": ["src"],
   "exclude": ["dist", "node_modules"]
 }

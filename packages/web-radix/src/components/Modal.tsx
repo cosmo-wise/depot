@@ -9,11 +9,13 @@ export interface ModalProps {
 
 export function Dialog({ open, onClose, title, children }: ModalProps): React.ReactElement | null {
   if (!open) return null
-  return React.createElement('div', { className: 'depot-dialog', role: 'dialog', 'aria-modal': true },
-    React.createElement('div', { className: 'depot-dialog__overlay', onClick: onClose }),
-    React.createElement('div', { className: 'depot-dialog__content' },
-      title ? React.createElement('h2', { className: 'depot-dialog__title' }, title) : null,
-      children,
-    ),
+  return (
+    <div className="depot-dialog" role="dialog" aria-modal="true">
+      <div className="depot-dialog__overlay" onClick={onClose} />
+      <div className="depot-dialog__content">
+        {title && <h2 className="depot-dialog__title">{title}</h2>}
+        {children}
+      </div>
+    </div>
   )
 }

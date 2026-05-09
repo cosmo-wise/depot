@@ -82,6 +82,41 @@ export const compatibilityMatrix: CompatibilityMatrix = {
         'universal-nativewind': { status: 'supported', features: ['drag', 'snap-points'] },
       },
     },
+    {
+      component: 'Toast',
+      profileSupport: {
+        'web-radix': { status: 'supported', features: ['auto-dismiss', 'stacking', 'variants'] },
+        'universal-nativewind': { status: 'partial', features: ['auto-dismiss'], missing: ['stacking'] },
+      },
+    },
+    {
+      component: 'AppShell',
+      profileSupport: {
+        'web-radix': { status: 'supported', features: ['header', 'sidebar', 'responsive'] },
+        'universal-nativewind': { status: 'partial', features: ['header'], missing: ['sidebar'] },
+      },
+    },
+    {
+      component: 'Card',
+      profileSupport: {
+        'web-radix': { status: 'supported', features: ['header', 'body', 'footer'] },
+        'universal-nativewind': { status: 'supported', features: ['header', 'body', 'footer'] },
+      },
+    },
+    {
+      component: 'DataTable',
+      profileSupport: {
+        'web-radix': { status: 'supported', features: ['sorting', 'render', 'empty-state'] },
+        'universal-nativewind': { status: 'partial', features: ['render'], missing: ['sorting'] },
+      },
+    },
+    {
+      component: 'EmptyState',
+      profileSupport: {
+        'web-radix': { status: 'supported', features: ['title', 'description', 'icon', 'action'] },
+        'universal-nativewind': { status: 'supported', features: ['title', 'description', 'action'] },
+      },
+    },
   ],
   blocks: [],
 }

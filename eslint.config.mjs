@@ -2,16 +2,14 @@ import js from '@eslint/js'
 import importPlugin from 'eslint-plugin-import'
 import tseslint from 'typescript-eslint'
 
-const maxLines = (max) => ['warn', { max, skipBlankLines: true, skipComments: true }]
-
 export default tseslint.config(
   {
-    ignores: ['build/**', 'coverage/**', 'dist/**', 'node_modules/**', 'output/**'],
+    ignores: ['build/**', 'coverage/**', 'dist/**', 'dist-registry/**', 'node_modules/**', 'output/**', 'packages/*/dist/**'],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ['src/**/*.ts', 'tests/**/*.ts', 'scripts/**/*.ts'],
+    files: ['packages/**/src/**/*.ts', 'packages/**/src/**/*.tsx', 'tests/**/*.ts', 'scripts/**/*.ts'],
     plugins: {
       import: importPlugin,
     },
@@ -29,15 +27,10 @@ export default tseslint.config(
     },
   },
   {
-    files: ['src/**/*.ts', 'scripts/**/*.ts'],
+    files: ['packages/**/src/**/*.ts', 'packages/**/src/**/*.tsx', 'scripts/**/*.ts'],
     rules: {
       'max-lines': 'off',
-    },
-  },
-  {
-    files: ['src/cli.ts', 'src/cli/**/*.ts', 'src/entrypoints/**/*.ts'],
-    rules: {
-      'max-lines': maxLines(160),
+      'max-lines-per-function': ['warn', { max: 60, skipBlankLines: true, skipComments: true }],
     },
   },
   {

@@ -9,8 +9,10 @@ export interface SheetProps {
 
 export function Sheet({ open, onClose, side = 'right', children }: SheetProps): React.ReactElement | null {
   if (!open) return null
-  return React.createElement('div', { className: `depot-sheet depot-sheet--${side}`, role: 'dialog' },
-    React.createElement('div', { className: 'depot-sheet__overlay', onClick: onClose }),
-    React.createElement('div', { className: 'depot-sheet__content' }, children),
+  return (
+    <div className={`depot-sheet depot-sheet--${side}`} role="dialog">
+      <div className="depot-sheet__overlay" onClick={onClose} />
+      <div className="depot-sheet__content">{children}</div>
+    </div>
   )
 }

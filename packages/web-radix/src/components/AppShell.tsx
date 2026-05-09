@@ -7,11 +7,13 @@ export interface AppShellProps {
 }
 
 export function AppShell({ header, sidebar, children }: AppShellProps): React.ReactElement {
-  return React.createElement('div', { className: 'depot-appshell' },
-    header ? React.createElement('header', { className: 'depot-appshell__header' }, header) : null,
-    React.createElement('div', { className: 'depot-appshell__body' },
-      sidebar ? React.createElement('aside', { className: 'depot-appshell__sidebar' }, sidebar) : null,
-      React.createElement('main', { className: 'depot-appshell__main' }, children),
-    ),
+  return (
+    <div className="depot-appshell">
+      {header && <header className="depot-appshell__header">{header}</header>}
+      <div className="depot-appshell__body">
+        {sidebar && <aside className="depot-appshell__sidebar">{sidebar}</aside>}
+        <main className="depot-appshell__main">{children}</main>
+      </div>
+    </div>
   )
 }

@@ -1,3 +1,4 @@
+// Registry index — re-exports all components for the source-copy bundle
 export { Button } from './components/Button.js'
 export type { ButtonProps } from './components/Button.js'
 export { TextField } from './components/TextField.js'
@@ -20,3 +21,13 @@ export { DataTable } from './components/DataTable.js'
 export type { DataTableProps, DataTableColumn } from './components/DataTable.js'
 export { EmptyState } from './components/EmptyState.js'
 export type { EmptyStateProps } from './components/EmptyState.js'
+
+// Blocks
+export { SignInBlock } from './blocks/auth/SignInBlock.js'
+export type { SignInBlockProps } from './blocks/auth/SignInBlock.js'
+export { AnalyticsDashboardBlock } from './blocks/dashboard/AnalyticsDashboardBlock.js'
+export type { AnalyticsDashboardBlockProps } from './blocks/dashboard/AnalyticsDashboardBlock.js'
+export { MarketingHeroBlock } from './blocks/marketing/MarketingHeroBlock.js'
+export type { MarketingHeroBlockProps } from './blocks/marketing/MarketingHeroBlock.js'
+export { ListDetailBlock } from './blocks/listdetail/ListDetailBlock.js'
+export type { ListDetailBlockProps } from './blocks/listdetail/ListDetailBlock.js'
