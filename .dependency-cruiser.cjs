@@ -1,3 +1,4 @@
+// INTENTIONALLY UNMANAGED — not synced by tools/chariot/sync_standards.py
 /** @type {import('dependency-cruiser').IConfiguration} */
 module.exports = {
   forbidden: [
