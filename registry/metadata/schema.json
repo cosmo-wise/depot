@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Depot Registry Metadata",
+  "type": "object",
+  "required": ["name", "version", "tier"],
+  "properties": {
+    "name": { "type": "string" },
+    "version": { "type": "string", "pattern": "^\\d+\\.\\d+\\.\\d+$" },
+    "tier": { "type": "string", "enum": ["open", "premium"] },
+    "compatibility": {
+      "type": "object",
+      "properties": {
+        "depot": { "type": "string" },
+        "blocks": { "type": "array", "items": { "type": "string" } },
+        "tokens": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "source": { "type": "string", "enum": ["source-copy", "package"] },
+        "license": { "type": "string" },
+        "author": { "type": "string" }
+      }
+    }
+  }
+}
