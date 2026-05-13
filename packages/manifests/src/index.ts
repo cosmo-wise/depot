@@ -1,4 +1,10 @@
-import type { ProfileManifest, CompatibilityMatrix, BlockManifest } from '@chariot/depot-contracts'
+import type {
+  BlockManifest,
+  CompatibilityMatrix,
+  DeliveryMode,
+  ProfileManifest,
+  UiProfile,
+} from '@chariot/depot-contracts'
 
 export const webRadixProfile: ProfileManifest = {
   id: 'web-radix',
@@ -155,3 +161,26 @@ export const blocks: BlockManifest[] = [
     dataMode: 'static',
   },
 ]
+
+export interface DepotProfileExport {
+  schema: 'chariot.depot.profile-export.v1'
+  defaultProfile: UiProfile
+  defaultDeliveryMode: DeliveryMode
+  profiles: ProfileManifest[]
+  compatibilityMatrix: CompatibilityMatrix
+  blocks: BlockManifest[]
+}
+
+export function buildProfileExport(
+  defaultProfile: UiProfile = 'web-radix',
+  defaultDeliveryMode: DeliveryMode = 'source-copy',
+): DepotProfileExport {
+  return {
+    schema: 'chariot.depot.profile-export.v1',
+    defaultProfile,
+    defaultDeliveryMode,
+    profiles,
+    compatibilityMatrix,
+    blocks,
+  }
+}

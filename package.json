@@ -20,6 +20,7 @@
     "lint:arch": "depcruise --config .dependency-cruiser.cjs \"packages/**/src/**/*.ts\"",
     "typecheck": "tsc -b --verbose",
     "verify:profiles": "tsx scripts/verifyProfiles.ts",
+    "export:profiles": "tsx scripts/exportProfiles.ts",
     "verify:tokens": "tsx scripts/syncTokens.ts --check",
     "doctor": "npm run typecheck && npm run lint && npm run lint:arch && npm test"
   },
