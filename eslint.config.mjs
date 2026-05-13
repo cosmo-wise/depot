@@ -1,4 +1,4 @@
-// INTENTIONALLY UNMANAGED — not synced by tools/chariot/sync_standards.py
+// INTENTIONALLY UNMANAGED — not synced by tools/chariot/sync/sync_standards.py
 import js from '@eslint/js'
 import importPlugin from 'eslint-plugin-import'
 import tseslint from 'typescript-eslint'
