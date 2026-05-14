@@ -16,7 +16,7 @@
     "build": "tsc -b",
     "build:registry": "tsx scripts/buildRegistry.ts",
     "test": "vitest run",
-    "lint": "eslint packages tests scripts eslint.config.mjs",
+    "lint": "eslint --no-error-on-unmatched-pattern packages tests scripts eslint.config.mjs",
     "lint:arch": "depcruise --config .dependency-cruiser.cjs \"packages/**/src/**/*.ts\"",
     "typecheck": "tsc -b --verbose",
     "verify:profiles": "tsx scripts/verifyProfiles.ts",

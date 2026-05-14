@@ -7,3 +7,4 @@ dist-registry/
 packages/*/dist/
 *.tgz
 *.tsbuildinfo
+probe/
