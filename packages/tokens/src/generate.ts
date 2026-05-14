@@ -1,98 +1,164 @@
-import * as fs from 'node:fs'
-import * as path from 'node:path'
-import { tokens } from './tokens.js'
+import * as fs from "node:fs";
+import * as path from "node:path";
+import { tokens } from "./tokens.js";
 
-const distDir = path.resolve(import.meta.dirname, '..', 'dist')
+const distDir = path.resolve(import.meta.dirname, "..", "dist");
 
 function ensureDir(dir: string): void {
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true })
-  }
+	if (!fs.existsSync(dir)) {
+		fs.mkdirSync(dir, { recursive: true });
+	}
 }
 
-function generateCSSVariables(): string {
-  const lines: string[] = [':root {']
-  const { colors, spacing, radius, shadow, typography, zIndex } = tokens
+export function generateCSSVariables(): string {
+	const lines: string[] = [":root {"];
+	const { colors, spacing, radius, shadow, typography, zIndex } = tokens;
 
-  for (const [shade, hex] of Object.entries(colors.gray)) {
-    lines.push(`  --color-gray-${shade}: ${hex};`)
-  }
-  for (const [shade, hex] of Object.entries(colors.primary)) {
-    lines.push(`  --color-primary-${shade}: ${hex};`)
-  }
-  for (const [shade, hex] of Object.entries(colors.danger)) {
-    lines.push(`  --color-danger-${shade}: ${hex};`)
-  }
-  for (const [shade, hex] of Object.entries(colors.success)) {
-    lines.push(`  --color-success-${shade}: ${hex};`)
-  }
-  for (const [shade, hex] of Object.entries(colors.warning)) {
-    lines.push(`  --color-warning-${shade}: ${hex};`)
-  }
+	for (const [shade, hex] of Object.entries(colors.gray)) {
+		lines.push(`  --color-gray-${shade}: ${hex};`);
+	}
+	for (const [shade, hex] of Object.entries(colors.primary)) {
+		lines.push(`  --color-primary-${shade}: ${hex};`);
+	}
+	for (const [shade, hex] of Object.entries(colors.danger)) {
+		lines.push(`  --color-danger-${shade}: ${hex};`);
+	}
+	for (const [shade, hex] of Object.entries(colors.success)) {
+		lines.push(`  --color-success-${shade}: ${hex};`);
+	}
+	for (const [shade, hex] of Object.entries(colors.warning)) {
+		lines.push(`  --color-warning-${shade}: ${hex};`);
+	}
 
-  for (const [key, value] of Object.entries(spacing)) {
-    lines.push(`  --spacing-${key}: ${value};`)
-  }
-  for (const [key, value] of Object.entries(radius)) {
-    lines.push(`  --radius-${key}: ${value};`)
-  }
-  for (const [key, value] of Object.entries(shadow)) {
-    lines.push(`  --shadow-${key}: ${value};`)
-  }
-  for (const [key, value] of Object.entries(zIndex)) {
-    lines.push(`  --z-${key}: ${value};`)
-  }
+	for (const [key, value] of Object.entries(spacing)) {
+		lines.push(`  --spacing-${key}: ${value};`);
+	}
+	for (const [key, value] of Object.entries(radius)) {
+		lines.push(`  --radius-${key}: ${value};`);
+	}
+	for (const [key, value] of Object.entries(shadow)) {
+		lines.push(`  --shadow-${key}: ${value};`);
+	}
+	for (const [key, value] of Object.entries(zIndex)) {
+		lines.push(`  --z-${key}: ${value};`);
+	}
 
-  lines.push(`  --font-sans: ${typography.fontFamily.sans};`)
-  lines.push(`  --font-mono: ${typography.fontFamily.mono};`)
-  lines.push('}')
-  lines.push('')
-  return lines.join('\n')
+	lines.push(`  --font-sans: ${typography.fontFamily.sans};`);
+	lines.push(`  --font-mono: ${typography.fontFamily.mono};`);
+	lines.push("}");
+	lines.push("");
+	return lines.join("\n");
 }
 
-function generateTailwindPreset(): string {
-  const { colors, spacing, radius, shadow, typography, zIndex, motion, breakpoint } = tokens
-  const preset = {
-    theme: {
-      extend: {
-        colors: {
-          gray: Object.fromEntries(Object.entries(colors.gray).map(([k, v]) => [k, `var(--color-gray-${k}, ${v})`])),
-          primary: Object.fromEntries(Object.entries(colors.primary).map(([k, v]) => [k, `var(--color-primary-${k}, ${v})`])),
-          danger: Object.fromEntries(Object.entries(colors.danger).map(([k, v]) => [k, `var(--color-danger-${k}, ${v})`])),
-          success: Object.fromEntries(Object.entries(colors.success).map(([k, v]) => [k, `var(--color-success-${k}, ${v})`])),
-          warning: Object.fromEntries(Object.entries(colors.warning).map(([k, v]) => [k, `var(--color-warning-${k}, ${v})`])),
-        },
-        spacing: Object.fromEntries(Object.entries(spacing).map(([k, v]) => [k, `var(--spacing-${k}, ${v})`])),
-        borderRadius: Object.fromEntries(Object.entries(radius).map(([k, v]) => [k, `var(--radius-${k}, ${v})`])),
-        boxShadow: Object.fromEntries(Object.entries(shadow).map(([k, v]) => [k, `var(--shadow-${k}, ${v})`])),
-        fontFamily: { sans: [`var(--font-sans, ${typography.fontFamily.sans})`], mono: [`var(--font-mono, ${typography.fontFamily.mono})`] },
-        zIndex: Object.fromEntries(Object.entries(zIndex).map(([k, v]) => [k, `var(--z-${k}, ${v})`])),
-        transitionDuration: motion.duration,
-        transitionTimingFunction: motion.easing,
-        screens: breakpoint,
-      },
-    },
-  }
+export function generateTailwindPreset(): string {
+	const {
+		colors,
+		spacing,
+		radius,
+		shadow,
+		typography,
+		zIndex,
+		motion,
+		breakpoint,
+	} = tokens;
+	const preset = {
+		theme: {
+			extend: {
+				colors: {
+					gray: Object.fromEntries(
+						Object.entries(colors.gray).map(([k, v]) => [
+							k,
+							`var(--color-gray-${k}, ${v})`,
+						]),
+					),
+					primary: Object.fromEntries(
+						Object.entries(colors.primary).map(([k, v]) => [
+							k,
+							`var(--color-primary-${k}, ${v})`,
+						]),
+					),
+					danger: Object.fromEntries(
+						Object.entries(colors.danger).map(([k, v]) => [
+							k,
+							`var(--color-danger-${k}, ${v})`,
+						]),
+					),
+					success: Object.fromEntries(
+						Object.entries(colors.success).map(([k, v]) => [
+							k,
+							`var(--color-success-${k}, ${v})`,
+						]),
+					),
+					warning: Object.fromEntries(
+						Object.entries(colors.warning).map(([k, v]) => [
+							k,
+							`var(--color-warning-${k}, ${v})`,
+						]),
+					),
+				},
+				spacing: Object.fromEntries(
+					Object.entries(spacing).map(([k, v]) => [
+						k,
+						`var(--spacing-${k}, ${v})`,
+					]),
+				),
+				borderRadius: Object.fromEntries(
+					Object.entries(radius).map(([k, v]) => [
+						k,
+						`var(--radius-${k}, ${v})`,
+					]),
+				),
+				boxShadow: Object.fromEntries(
+					Object.entries(shadow).map(([k, v]) => [
+						k,
+						`var(--shadow-${k}, ${v})`,
+					]),
+				),
+				fontFamily: {
+					sans: [`var(--font-sans, ${typography.fontFamily.sans})`],
+					mono: [`var(--font-mono, ${typography.fontFamily.mono})`],
+				},
+				zIndex: Object.fromEntries(
+					Object.entries(zIndex).map(([k, v]) => [k, `var(--z-${k}, ${v})`]),
+				),
+				transitionDuration: motion.duration,
+				transitionTimingFunction: motion.easing,
+				screens: breakpoint,
+			},
+		},
+	};
 
-  return `// Generated by @chariot/depot-tokens\nexport default ${JSON.stringify(preset, null, 2)}\n`
+	return `// Generated by @chariot/depot-tokens\nexport default ${JSON.stringify(preset, null, 2)}\n`;
 }
 
-function generateNativeTokens(): string {
-  return `// Generated by @chariot/depot-tokens — Native token map
-export const nativeTokens = ${JSON.stringify(tokens, null, 2)} as const
-`
+export function generateNativeTokens(): string {
+	return `// Generated by @chariot/depot-tokens — Native token map
+export const nativeTokens = ${JSON.stringify(tokens, null, 2)}
+`;
 }
 
 function main(): void {
-  ensureDir(path.join(distDir, 'css'))
-  ensureDir(path.join(distDir, 'tailwind'))
-  ensureDir(path.join(distDir, 'native'))
+	ensureDir(path.join(distDir, "css"));
+	ensureDir(path.join(distDir, "tailwind"));
+	ensureDir(path.join(distDir, "native"));
 
-  fs.writeFileSync(path.join(distDir, 'css', 'variables.css'), generateCSSVariables(), 'utf-8')
-  fs.writeFileSync(path.join(distDir, 'tailwind', 'preset.js'), generateTailwindPreset(), 'utf-8')
-  fs.writeFileSync(path.join(distDir, 'native', 'tokens.js'), generateNativeTokens(), 'utf-8')
+	fs.writeFileSync(
+		path.join(distDir, "css", "variables.css"),
+		generateCSSVariables(),
+		"utf-8",
+	);
+	fs.writeFileSync(
+		path.join(distDir, "tailwind", "preset.js"),
+		generateTailwindPreset(),
+		"utf-8",
+	);
+	fs.writeFileSync(
+		path.join(distDir, "native", "tokens.js"),
+		generateNativeTokens(),
+		"utf-8",
+	);
 
-  console.log('tokens generated successfully')
+	console.log("tokens generated successfully");
 }
 
-main()
+main();
