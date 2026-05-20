@@ -20,6 +20,9 @@ frontend assets consumed by Harness, Course, Trial, and Saddle.
 - vitest for testing
 - eslint + depcruise for linting
 - Semantic versioning for published packages
+- **Tests live in `repos/probe/assets/depot/unit/tests/`**, not co-located with source.
+  Co-located test files (`packages/*/src/**/*.test.*`) are gitignored — use
+  `probe materialize && probe run` instead of `npm test` for formal test execution.
 
 ## Commands
 

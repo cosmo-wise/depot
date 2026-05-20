@@ -8,3 +8,5 @@ packages/*/dist/
 *.tgz
 *.tsbuildinfo
 probe/
+# Tests are managed by repos/probe — do not co-locate test files
+packages/*/src/**/*.test.*

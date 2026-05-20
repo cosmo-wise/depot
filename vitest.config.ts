@@ -11,6 +11,7 @@ export default defineConfig({
       '@chariot/depot-manifests': path.resolve(__dirname, 'packages/manifests/src/index.ts'),
       '@chariot/depot-blocks': path.resolve(__dirname, 'packages/blocks/src/index.ts'),
       '@chariot/depot-tokens': path.resolve(__dirname, 'packages/tokens/src/index.ts'),
+      '@chariot/depot-web-radix': path.resolve(__dirname, 'packages/web-radix/src/index.ts'),
     },
   },
   test: {
