@@ -13,6 +13,7 @@ export default defineConfig({
       '@chariot/depot-tokens': path.resolve(__dirname, 'packages/tokens/src/index.ts'),
       '@chariot/depot-web-radix': path.resolve(__dirname, 'packages/web-radix/src/index.ts'),
     },
+    dedupe: ['react', 'react-dom'],
   },
   test: {
     globals: true,

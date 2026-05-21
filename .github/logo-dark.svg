@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 86 51">
+  <defs>
+    <linearGradient id="g" x1="14" y1="0" x2="72" y2="0" gradientUnits="userSpaceOnUse" color-interpolation="linearRGB">
+      <stop offset="0%" stop-color="#b6c9f3"/>
+      <stop offset="6%" stop-color="#a5b8e4"/>
+      <stop offset="20%" stop-color="#94a8d5"/>
+      <stop offset="39%" stop-color="#8398c7"/>
+      <stop offset="61%" stop-color="#7388b8"/>
+      <stop offset="80%" stop-color="#6378aa"/>
+      <stop offset="94%" stop-color="#53699c"/>
+      <stop offset="100%" stop-color="#445a8e"/>
+    </linearGradient>
+    <linearGradient id="gs" x1="14" y1="0" x2="72" y2="0" gradientUnits="userSpaceOnUse" color-interpolation="linearRGB">
+      <stop offset="0%" stop-color="#576075"/>
+      <stop offset="6%" stop-color="#4f586e"/>
+      <stop offset="20%" stop-color="#475067"/>
+      <stop offset="39%" stop-color="#3f4960"/>
+      <stop offset="61%" stop-color="#374159"/>
+      <stop offset="80%" stop-color="#303a52"/>
+      <stop offset="94%" stop-color="#28324b"/>
+      <stop offset="100%" stop-color="#212b44"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#gs)" font-family="SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace" font-size="18px" transform="translate(2 2)" opacity="0.92">
+    <text x="14" y="32" xml:space="preserve">depot</text>
+  </g>
+  <g fill="url(#g)" font-family="SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace" font-size="18px">
+    <text x="14" y="32" xml:space="preserve">depot</text>
+  </g>
+</svg>

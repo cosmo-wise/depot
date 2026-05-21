@@ -1,122 +1,141 @@
 # Depot
 
 <p align="center">
-  Chariot Depot — Harness 生成链的 UI 资产中心
+  把语义组件契约、设计令牌、平台实现和页面资产集中成一套可复用的前端资源中心。
 </p>
 
 <p align="center">
 
-[![Version][version-shield]][version-url]
-[![License][license-shield]][license-url]
 [![Node][node-shield]][node-url]
-[![Build][build-shield]][build-url]
+[![Version][version-shield]][version-url]
+[![Workspace][workspace-shield]][workspace-url]
+[![License][license-shield]][license-url]
 
 </p>
 
 <p align="center">
   <a href="#快速开始">快速开始</a> &middot;
-  <a href="#结构">结构</a> &middot;
-  <a href="#配置文件">配置文件</a> &middot;
-  <a href="#交付模式">交付模式</a> &middot;
+  <a href="#安装">安装</a> &middot;
+  <a href="#包结构">包结构</a> &middot;
   <a href="#集成">集成</a> &middot;
   <a href="README.md">🇬🇧 English</a>
 </p>
 
 ---
 
-Depot 是一个 **可重用的前端资产注册表**，提供：
+## 为什么需要 Depot
 
-- 语义化组件合约（平台无关）
-- 设计令牌（CSS 变量、Tailwind 预设、原生令牌映射）
-- 平台实现（`web-radix`、`universal-nativewind` — V2）
-- 页面块和模板
-- 配置文件清单和兼容性矩阵
-- 源码复制和包交付模式
+AI 生成前端最容易失控的地方不是"能不能写出一个页面"，而是每次生成都会重新定义组件 API、样式约束和平台假设。没有统一的资源中心，web、native、页面 block 和设计令牌会在不同链路里各说各话。
 
-## 问题
+Depot 把这些资产收口成统一仓库：组件契约、tokens、平台实现、blocks、manifest 和 source-copy registry 都围绕同一套 profile 能力面组织。
 
-AI 生成的前端面临碎片化问题：每次生成都产生不同的组件 API、不一致的样式约定和不兼容的平台假设。没有共享的资产词汇表，生成链会在不同运行之间产出差异巨大的输出。
+如果你需要让生成链路在不同平台和多次迭代中保持一致组件语言，Depot 适合成为上游编排和下游消费之间的共享资产层。
 
-Depot 通过在语义合约背后集中管理 UI 资产来解决这个问题——组件、令牌、块和配置文件——使生成链每次都解析出一致、平台兼容的输出。
+如果你只是在单一应用里临时写几个组件，不需要跨 profile 复用，这个仓库会偏重。
 
 ## 特性
 
-- **语义化组件合约** — 平台无关的组件接口，与任何特定框架或实现解耦。
-- **设计令牌系统** — 单一来源的令牌，导出为 CSS 自定义属性、Tailwind 预设和原生平台映射。
-- **多平台实现** — 来自相同合约的 `web-radix`（React + Vite + Tailwind）和 `universal-nativewind`（Expo + React Native + NativeWind）。
-- **页面块和模板** — 预构建、可组合的页面片段，用于快速 UI 生成。
-- **配置文件兼容性矩阵** — 在生成时解析的声明式平台能力清单。
-- **双交付模式** — npm 包依赖或面向生成项目的源码复制。
+- **语义组件契约**：平台无关的接口定义，让消费端先对齐能力面，再选择具体实现。
+- **单源设计令牌**：同一套 tokens 输出给 CSS vars、Tailwind preset 和 native token map。
+- **多平台实现包**：当前同时维护 `web-radix` 和 `universal-nativewind` 两条实现面。
+- **页面 blocks 与模板资产**：为生成链路提供可复用页面片段，而不是每次从零拼装。
+- **Profile 能力矩阵**：manifest 声明平台能力、兼容性和分发模式，供编排层决策。
+- **包分发与 source-copy 双模式**：既可以依赖 workspace/package，也可以导出稳定源码到生成项目。
 
-## 结构
+## 何时使用
 
-```
-depot/
-├── packages/
-│   ├── contracts/          # @chariot/depot-contracts
-│   ├── tokens/             # @chariot/depot-tokens
-│   ├── web-radix/          # @chariot/depot-web-radix
-│   ├── universal-nativewind/  # @chariot/depot-universal-nativewind (V2)
-│   ├── blocks/             # @chariot/depot-blocks
-│   └── manifests/          # @chariot/depot-manifests
-├── scripts/                # 构建、验证、发布工具
-├── registry-src/           # 源码复制注册表模板
-├── dist-registry/          # 构建后的注册表产物
-├── examples/               # 参考实现
-├── tests/                  # 跨包集成测试
-└── docs/                   # 配置、合约、集成文档
-```
+| 场景 | 推荐命令 |
+|------|------|
+| 安装并校验整个 workspace | `npm install` + `npm run doctor` |
+| 构建全部包 | `npm run build` |
+| 校验 profile 定义 | `npm run verify:profiles` |
+| 导出 profile 产物 | `npm run export:profiles` |
+| 构建 source-copy registry | `npm run build:registry` |
 
 ## 快速开始
 
 ```bash
 npm install
 npm run build
-npm test
+npm run verify:profiles
+npm run build:registry
+npm run doctor
+```
+
+## 安装
+
+```bash
+npm install
+```
+
+需要 Node.js 20+。
+
+## 包结构
+
+| 包 | 角色 |
+|------|------|
+| `packages/contracts` | 语义组件契约 |
+| `packages/tokens` | 设计令牌和导出适配器 |
+| `packages/web-radix` | Web 实现包 |
+| `packages/universal-nativewind` | 通用 React Native / Expo 实现 |
+| `packages/blocks` | 可复用页面 blocks |
+| `packages/manifests` | Profile 声明和兼容性元数据 |
+
+## 使用
+
+### 构建所有包
+
+```bash
+npm run build
 npm run typecheck
 npm run lint
 ```
 
-## 配置文件
+### 校验 profile 和 tokens
 
-| 配置文件 | 状态 | 平台 | 框架 |
-| --- | --- | --- | --- |
+```bash
+npm run verify:profiles
+npm run verify:tokens
+npm run export:profiles
+```
+
+### 构建 registry 产物
+
+```bash
+npm run build:registry
+```
+
+## Profile
+
+| Profile | 状态 | 平台 | 框架 |
+|------|------|------|------|
 | `web-radix` | V1 | web | React + Vite + Tailwind |
 | `universal-nativewind` | V2 | web, ios, android | Expo + React Native + NativeWind |
 
 ## 交付模式
 
-- **package（包模式）**：依赖 `@chariot/depot-*` npm 包
-- **source-copy（源码复制模式）**：将稳定的组件源码复制到生成的项目中
+- **package（包模式）**：依赖 `@chariot/depot-*` workspace 包
+- **source-copy（源码复制模式）**：将稳定 registry 源码复制到生成的项目中
 
-## 架构
+## 工作原理
 
-Depot 将 UI 资产组织在六个包中，每个包有清晰的边界：
-
-| 包 | 角色 | 消费者 |
-| --- | --- | --- |
-| `contracts` | 语义化组件接口 | 所有实现包 |
-| `tokens` | 设计令牌（CSS、Tailwind、原生） | 平台实现 |
-| `web-radix` | 基于 Radix UI 的 Web 组件 | Web 生成目标 |
-| `universal-nativewind` | 基于 Expo/NativeWind 的跨平台组件 | 通用生成目标 |
-| `blocks` | 预构建页面模板 | 页面组合 |
-| `manifests` | 配置文件定义和兼容性 | 生成编排 |
-
-### 工作原理
-
-当生成链产生前端目标时，它查询 Depot 的配置文件清单以了解平台兼容性，解析匹配的包实现，签订组件接口合约，并应用设计令牌——全部从单个配置文件选择中解析，无需逐组件的框架逻辑。
-
-→ [合约](docs/contracts/) · [集成指南](docs/integration/) · [配置文件](docs/profiles/)
+Depot 以 `packages/` 为事实来源，然后将这些资产投影到 profile manifest 和 registry 输出。上游生成器可以先解析 profile，然后消费契约、tokens、实现和 blocks，无需每次运行都发明组件 API。
 
 ## 集成
 
-Depot 服务于 Chariot 家族：
+Depot 服务 Chariot 前端链路：
 
-- **Harness** — 生成编排消费者
-- **Course** — 蓝图/UI 架构规划
-- **Trial** — 配置文件感知的审核门禁
-- **Saddle** — 本地 CLI 拉取/同步/注入工具
-- **Carriage** — 应用运行时的资产解析
+- **Harness** 在应用生成期间消费共享资产。
+- **Course** 根据 Depot 的 profile 面规划 UI 架构。
+- **Trial** 验证 profile 感知的输出。
+- **Saddle** 将 Depot 资产拉取并注入到目标项目中。
+- **Carriage** 从同一包集解析运行时资产期望。
+
+## 开发
+
+`packages/` 是权威来源。`registry` 和构建输出是生成的产物，不是手工编辑的源码。
+
+正式测试位于 `repos/probe/assets/depot/unit/tests/`；`npm test` 是本地 workspace 检查，而 probe 仍然是已发布行为的正式测试路径。
 
 ## 贡献
 
@@ -127,11 +146,11 @@ Depot 服务于 Chariot 家族：
 根据 Apache License, Version 2.0 许可。详见 [LICENSE](LICENSE)。
 
 <!-- Badge reference links -->
-[version-shield]: https://img.shields.io/badge/version-0.1.0-blue
-[version-url]: https://github.com/cosmo-wise/depot/releases
-[license-shield]: https://img.shields.io/badge/license-Apache%202.0-blue
-[license-url]: https://github.com/cosmo-wise/depot/blob/main/LICENSE
-[node-shield]: https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js
-[node-url]: https://nodejs.org
-[build-shield]: https://img.shields.io/badge/build-passing-brightgreen
-[build-url]: #
+[node-shield]: https://img.shields.io/badge/node-%3E%3D20-339933?logo=node.js&logoColor=white
+[node-url]: https://nodejs.org/
+[version-shield]: https://img.shields.io/badge/version-0.1.0-2563EB
+[version-url]: ./package.json
+[workspace-shield]: https://img.shields.io/badge/workspace-6%20packages-0F766E
+[workspace-url]: ./packages
+[license-shield]: https://img.shields.io/badge/license-Apache%202.0-1D4ED8
+[license-url]: ./LICENSE
