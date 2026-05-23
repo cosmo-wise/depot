@@ -1,3 +1,10 @@
-// @chariot/depot-universal-nativewind
-// V2 reserved — universal cross-platform components via Expo / NativeWind
-export {}
+export { Button } from './components/Button.js';
+export type { ButtonProps } from './components/Button.js';
+export { TextField } from './components/TextField.js';
+export type { TextFieldProps } from './components/TextField.js';
+export { Card, CardHeader, CardContent, CardFooter, CardTitle } from './components/Card.js';
+export type { CardProps } from './components/Card.js';
+export { AppShell } from './components/AppShell.js';
+export type { AppShellProps } from './components/AppShell.js';
+export { Tabs, TabsList, TabsTrigger, TabsContent } from './components/Tabs.js';
+export type { TabsProps, TabsTriggerProps, TabsContentProps } from './components/Tabs.js';
