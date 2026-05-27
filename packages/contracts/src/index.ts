@@ -1,8 +1,8 @@
-export type TargetPlatform = 'web' | 'ios' | 'android'
+export type TargetPlatform = 'web' | 'ios' | 'android' | 'miniapp'
 
 export type DeliveryMode = 'package' | 'source-copy'
 
-export type UiProfile = 'web-radix' | 'universal-nativewind'
+export type UiProfile = 'web-radix' | 'universal-nativewind' | 'taro-miniapp'
 
 export type CapabilityTier = 'web-only' | 'universal'
 
@@ -55,4 +55,24 @@ export interface CompatibilityMatrix {
   supportedDeliveryModes: DeliveryMode[]
   components: ComponentCapability[]
   blocks: string[]
+}
+
+export interface TokenVersion {
+  schema: 'chariot.depot.token-version.v1'
+  version: string
+  hash: string
+  createdAt: string
+  changes?: string[]
+}
+
+export interface ProductTokenOverrides {
+  productId: string
+  profile: UiProfile
+  overrides: {
+    primaryColor?: string
+    secondaryColor?: string
+    fontFamily?: string
+    borderRadius?: string
+    spacing?: string
+  }
 }

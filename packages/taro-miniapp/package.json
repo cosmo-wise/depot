@@ -1,0 +1,1 @@
+{"name":"@chariot/depot-taro-miniapp","version":"0.1.0","private":true,"description":"Taro miniapp component library profile","main":"./src/index.ts","scripts":{"build":"tsc --noEmit","typecheck":"tsc --noEmit","lint":"eslint src/"},"dependencies":{"react":"^18.3.0"},"devDependencies":{"typescript":"^5.5.0"}}

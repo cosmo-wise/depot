@@ -32,9 +32,23 @@ export const universalNativewindProfile: ProfileManifest = {
   tokenRuntime: 'nativewind-token-map',
 }
 
+export const taroMiniappProfile: ProfileManifest = {
+  id: 'taro-miniapp',
+  platforms: ['miniapp'],
+  framework: 'react',
+  componentLibrary: '@chariot/depot-taro-miniapp',
+  buildTool: 'taro',
+  deliveryModes: ['source-copy'],
+  capabilityTier: 'web-only',
+  trialProfiles: ['web-mobile'],
+  defaultScaffold: 'taro-react-ts',
+  tokenRuntime: 'taro-style-vars',
+}
+
 export const profiles: ProfileManifest[] = [
   webRadixProfile,
   universalNativewindProfile,
+  taroMiniappProfile,
 ]
 
 export function getProfile(id: string): ProfileManifest | undefined {
