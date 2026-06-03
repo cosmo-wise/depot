@@ -30,6 +30,8 @@ export interface ProfileManifest {
   trialProfiles: string[]
   defaultScaffold: string
   tokenRuntime: string
+  providerPackage?: string
+  commercialPackage?: string
 }
 
 export interface BlockManifest {

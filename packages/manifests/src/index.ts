@@ -17,6 +17,8 @@ export const webRadixProfile: ProfileManifest = {
   trialProfiles: ['web-desktop', 'web-tablet', 'web-mobile'],
   defaultScaffold: 'vite-react-ts',
   tokenRuntime: 'tailwind-css-vars',
+  providerPackage: '@chariot/depot-web-radix',
+  commercialPackage: '@wares/ui-premium',
 }
 
 export const universalNativewindProfile: ProfileManifest = {
