@@ -15,23 +15,23 @@ frontend assets consumed by Harness, Course, Trial, and Saddle.
 
 ## Conventions
 
-- npm workspaces (not pnpm)
+- pnpm workspaces (`pnpm-workspace.yaml`, `workspace:*` internal refs)
 - TypeScript strict mode
 - vitest for testing
 - eslint + depcruise for linting
 - Semantic versioning for published packages
 - **Tests live in `repos/probe/assets/depot/unit/tests/`**, not co-located with source.
   Co-located test files (`packages/*/src/**/*.test.*`) are gitignored — use
-  `probe materialize && probe run` instead of `npm test` for formal test execution.
+  `probe materialize && probe run` instead of `pnpm test` for formal test execution.
 
 ## Commands
 
 ```bash
-npm install          # install all workspace deps
-npm run build        # build all packages (tsc)
-npm test             # run all tests
-npm run typecheck    # type-check all packages
-npm run lint         # lint all packages
-npm run verify:profiles  # validate profile manifests
-npm run build:registry   # build registry artifacts
+pnpm install          # install all workspace deps
+pnpm run build        # build all packages (tsc)
+pnpm test             # run all tests
+pnpm run typecheck    # type-check all packages
+pnpm run lint         # lint all packages
+pnpm run verify:profiles  # validate profile manifests
+pnpm run build:registry   # build registry artifacts
 ```

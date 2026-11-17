@@ -18,9 +18,9 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@chariot/depot-contracts": "*",
-    "@chariot/depot-manifests": "*",
-    "@chariot/depot-web-radix": "*"
+    "@chariot/depot-contracts": "workspace:*",
+    "@chariot/depot-manifests": "workspace:*",
+    "@chariot/depot-web-radix": "workspace:*"
   },
   "peerDependencies": {
     "react": "^18 || ^19"

@@ -46,26 +46,26 @@ Depot 把这些资产收口成统一仓库：组件契约、tokens、平台实�
 
 | 场景 | 推荐命令 |
 |------|------|
-| 安装并校验整个 workspace | `npm install` + `npm run doctor` |
-| 构建全部包 | `npm run build` |
-| 校验 profile 定义 | `npm run verify:profiles` |
-| 导出 profile 产物 | `npm run export:profiles` |
-| 构建 source-copy registry | `npm run build:registry` |
+| 安装并校验整个 workspace | `pnpm install` + `pnpm run doctor` |
+| 构建全部包 | `pnpm run build` |
+| 校验 profile 定义 | `pnpm run verify:profiles` |
+| 导出 profile 产物 | `pnpm run export:profiles` |
+| 构建 source-copy registry | `pnpm run build:registry` |
 
 ## 快速开始
 
 ```bash
-npm install
-npm run build
-npm run verify:profiles
-npm run build:registry
-npm run doctor
+pnpm install
+pnpm run build
+pnpm run verify:profiles
+pnpm run build:registry
+pnpm run doctor
 ```
 
 ## 安装
 
 ```bash
-npm install
+pnpm install
 ```
 
 需要 Node.js 20+。
@@ -86,23 +86,23 @@ npm install
 ### 构建所有包
 
 ```bash
-npm run build
-npm run typecheck
-npm run lint
+pnpm run build
+pnpm run typecheck
+pnpm run lint
 ```
 
 ### 校验 profile 和 tokens
 
 ```bash
-npm run verify:profiles
-npm run verify:tokens
-npm run export:profiles
+pnpm run verify:profiles
+pnpm run verify:tokens
+pnpm run export:profiles
 ```
 
 ### 构建 registry 产物
 
 ```bash
-npm run build:registry
+pnpm run build:registry
 ```
 
 ## Profile
@@ -135,7 +135,7 @@ Depot 服务 Chariot 前端链路：
 
 `packages/` 是权威来源。`registry` 和构建输出是生成的产物，不是手工编辑的源码。
 
-正式测试位于 `repos/probe/assets/depot/unit/tests/`；`npm test` 是本地 workspace 检查，而 probe 仍然是已发布行为的正式测试路径。
+正式测试位于 `repos/probe/assets/depot/unit/tests/`；`pnpm test` 是本地 workspace 检查，而 probe 仍然是已发布行为的正式测试路径。
 
 ## 贡献
 

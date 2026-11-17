@@ -1,0 +1,7 @@
+packages:
+  - "packages/contracts"
+  - "packages/tokens"
+  - "packages/web-radix"
+  - "packages/universal-nativewind"
+  - "packages/blocks"
+  - "packages/manifests"

@@ -21,6 +21,6 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@chariot/depot-contracts": "*"
+    "@chariot/depot-contracts": "workspace:*"
   }
 }

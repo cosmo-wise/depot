@@ -50,26 +50,26 @@ Depot 把这些资产收口成统一仓库：组件契约、tokens、平台实�
 
 | 场景 | 推荐命令 |
 |------|------|
-| 安装并校验整个 workspace | `npm install` + `npm run doctor` |
-| 构建全部包 | `npm run build` |
-| 校验 profile 定义 | `npm run verify:profiles` |
-| 导出 profile 产物 | `npm run export:profiles` |
-| 构建 source-copy registry | `npm run build:registry` |
+| 安装并校验整个 workspace | `pnpm install` + `pnpm run doctor` |
+| 构建全部包 | `pnpm run build` |
+| 校验 profile 定义 | `pnpm run verify:profiles` |
+| 导出 profile 产物 | `pnpm run export:profiles` |
+| 构建 source-copy registry | `pnpm run build:registry` |
 
 ## Quick Start
 
 ```bash
-npm install
-npm run build
-npm run verify:profiles
-npm run build:registry
-npm run doctor
+pnpm install
+pnpm run build
+pnpm run verify:profiles
+pnpm run build:registry
+pnpm run doctor
 ```
 
 ## Install
 
 ```bash
-npm install
+pnpm install
 ```
 
 Requires Node.js 20+.
@@ -90,23 +90,23 @@ Requires Node.js 20+.
 ### Build all packages
 
 ```bash
-npm run build
-npm run typecheck
-npm run lint
+pnpm run build
+pnpm run typecheck
+pnpm run lint
 ```
 
 ### Verify profiles and tokens
 
 ```bash
-npm run verify:profiles
-npm run verify:tokens
-npm run export:profiles
+pnpm run verify:profiles
+pnpm run verify:tokens
+pnpm run export:profiles
 ```
 
 ### Build registry artifacts
 
 ```bash
-npm run build:registry
+pnpm run build:registry
 ```
 
 ## Profiles
@@ -139,7 +139,7 @@ Depot serves the Chariot frontend chain:
 
 `packages/` is authoritative. `registry` and built outputs are generated artifacts, not hand-edited source.
 
-Formal tests live under `repos/probe/assets/depot/unit/tests/`; `npm test` is a local workspace check, while probe remains the formal test path for published behavior.
+Formal tests live under `repos/probe/assets/depot/unit/tests/`; `pnpm test` is a local workspace check, while probe remains the formal test path for published behavior.
 
 ## Contributing
 

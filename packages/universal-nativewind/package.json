@@ -22,7 +22,7 @@
     "react-native": "*"
   },
   "dependencies": {
-    "@chariot/depot-contracts": "*",
-    "@chariot/depot-tokens": "*"
+    "@chariot/depot-contracts": "workspace:*",
+    "@chariot/depot-tokens": "workspace:*"
   }
 }
